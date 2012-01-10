@@ -9,6 +9,7 @@
         <welcome-file>hello-world</welcome-file>
     </welcome-file-list>
  
+ 	<!-- Simple servlet example -->
     <servlet>
         <servlet-name>HelloWorldServlet</servlet-name>
         <servlet-class>
@@ -19,5 +20,18 @@
     <servlet-mapping>
         <servlet-name>HelloWorldServlet</servlet-name>
         <url-pattern>/hello-world</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Expression language example -->
+    <servlet>
+        <servlet-name>ElServlet</servlet-name>
+        <servlet-class>
+            home.ElServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ElServlet</servlet-name>
+        <url-pattern>/AddNumber.do</url-pattern>
     </servlet-mapping>
 </web-app>
