@@ -6,7 +6,7 @@
     id="WebApp_ID" version="2.5">
     <display-name>HelloWorldServlet</display-name>
     <welcome-file-list>
-        <welcome-file>hello-world</welcome-file>
+        <welcome-file>AddNumberForm.jsp</welcome-file>
     </welcome-file-list>
  
  	<!-- Simple servlet example -->
