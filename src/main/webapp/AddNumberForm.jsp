@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form action="AddNumber.do">
+	<form action= <%= response.encodeURL("AddNumber.do")%>>
 		<p>Put number:</p>
 		<input name="number" type="text"><input type="submit"
 			value="Send" />
