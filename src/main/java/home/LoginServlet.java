@@ -55,12 +55,5 @@ public class LoginServlet extends HttpServlet {
 		
 	}
 	
-	public static void main(String[] args) {
-		EntityManager em = DBManager.getDbManager().createEntityManager();
-		em.getTransaction().begin();
-		em.persist(new User());
-		em.getTransaction().commit();
-		em.close();
-	}
 
 }

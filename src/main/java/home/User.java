@@ -1,6 +1,8 @@
 package home;
 
-import javax.persistence.Column;
+import java.io.Serializable;
+
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,12 +13,15 @@ import javax.servlet.http.HttpSession;
 
 @Entity
 @Table(name="UserTable")
-public class User {
+public class User implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(nullable=true)
-	private Integer id;	
+	@Basic(optional=false)
+	private Integer id;
+	
 	private String name;
 	private String login;
 	private String password;
@@ -61,12 +66,10 @@ public class User {
 		this.password = password;
 	}
 
-	@Transient
 	public HttpSession getSession() {
 		return session;
 	}
 
-	@Transient
 	public void setSession(HttpSession session) {
 		this.session = session;
 	}
