@@ -11,9 +11,10 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ElServlet extends HttpServlet {
-
-	private static final long serialVersionUID = 1L;
+@SuppressWarnings("serial")
+public class LogoutServlet extends HttpServlet {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(LogoutServlet.class);
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -25,18 +26,14 @@ public class ElServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		Logger log = LoggerFactory.getLogger(this.getClass());
-		
-		resp.setContentType("text/html;charset=UTF-8");
-		
-		HttpSession httpSession = req.getSession();
+		HttpSession session = req.getSession(false);
+		if(session != null){
+			LOGGER.info("Invalidating session for user: " + session.getAttribute("user"));
+			session.invalidate();
+		}
 
-		log.info("ElServlet session is: " + httpSession);
-		log.info("Encoded url: " + resp.encodeURL("/Result.jsp"));
+		req.getRequestDispatcher("/login.jsp").forward(req, resp);
 		
-		int result = 5 + Integer.parseInt(req.getParameter("number"));
-		req.setAttribute("result", result);
-		req.getRequestDispatcher(resp.encodeURL("/Result.jsp")).include(req, resp);
 	}
 
 }
